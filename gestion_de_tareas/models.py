@@ -8,6 +8,8 @@ class Usuario(models.Model):
     correo = models.CharField(max_length=50, unique=True)
     contraseña = models.CharField(max_length=50)
     fecha_registro = models.DateTimeField(default=timezone.now)
+    #----Relaciones
+    #proyectos_asignados = models.ManyToManyField(Proyecto)
     
 class Tarea(models.Model):
     titulo = models.CharField(max_length=50)
@@ -22,6 +24,13 @@ class Tarea(models.Model):
     completada = models.BooleanField()
     fecha_creacion = models.DateField(default=timezone.now)
     hora_vencimiento = models.TimeField(default=timezone.now)
+    #----Relaciones
+    creador = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuarios_asignados = models.ManyToManyField(Usuario, through='Asignacion_de_tarea') 
+
+class Asignacion_de_tarea(models.Model):
+    tarea = models.ForeignKey(Tarea, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     
 class Proyecto(models.Model):
     nombre = models.CharField(max_length=50)
