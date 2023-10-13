@@ -26,7 +26,7 @@ class Tarea(models.Model):
     hora_vencimiento = models.TimeField(default=timezone.now)
     #----Relaciones
     creador = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    usuarios_asignados = models.ManyToManyField(Usuario, through='Asignacion_de_tarea')
+    usuarios_asignados = models.ManyToManyField(Usuario, through='Asignacion_de_tarea', related_name="usuarios_asignados")
     etiquetas_asociadas = models.ManyToManyField(Etiqueta)
 
 class Asignacion_de_tarea(models.Model):
