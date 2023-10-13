@@ -8,9 +8,10 @@ class Usuario(models.Model):
     correo = models.CharField(max_length=50, unique=True)
     contraseña = models.CharField(max_length=50)
     fecha_registro = models.DateTimeField(default=timezone.now)
-    #----Relaciones
-    proyectos_asignados = models.ManyToManyField(Proyecto)
     
+class Etiqueta(models.Model):
+    nombre = models.CharField(max_length=50, unique=True)
+
 class Tarea(models.Model):
     titulo = models.CharField(max_length=50)
     descripcion = models.TextField()
@@ -40,11 +41,9 @@ class Proyecto(models.Model):
     fecha_inicio = models.DateField(default=timezone.now)
     fecha_finalizacion = models.DateField(default=timezone.now)
     #----Relaciones
-    creador = models.OneToOneField(Usuario, on_delete=models.CASCADE)
+    creador = models.OneToOneField(Usuario, on_delete=models.CASCADE, related_name="usuario_creador")
     tareas = models.ForeignKey(Tarea, on_delete=models.CASCADE)
-    
-class Etiqueta(models.Model):
-    nombre = models.CharField(max_length=50, unique=True)
+    proyectos_asignados = models.ManyToManyField(Usuario)
 
 class Asignacion_de_Tareas(models.Model):
     observaciones = models.TextField()
@@ -53,5 +52,5 @@ class Asignacion_de_Tareas(models.Model):
 class Comentario(models.Model):
     contenido = models.TextField()
     fecha_comentario = models.DateTimeField(default=timezone.now)
-    autor = models.OneToOneField(Usuario)
-    comentario_tarea = models.OneToOneField(Tarea)
+    autor = models.OneToOneField(Usuario, on_delete=models.CASCADE)
+    comentario_tarea = models.OneToOneField(Tarea, on_delete=models.CASCADE)
