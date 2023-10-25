@@ -9,8 +9,22 @@ class Usuario(models.Model):
     contraseña = models.CharField(max_length=50)
     fecha_registro = models.DateTimeField(default=timezone.now)
     
+    def __str__(self) -> str:
+        return self.nombre
+    
 class Etiqueta(models.Model):
     nombre = models.CharField(max_length=50, unique=True)
+
+
+class Proyecto(models.Model):
+    nombre = models.CharField(max_length=50)
+    descripcion = models.TextField()
+    duracion_estimada = models.FloatField()
+    fecha_inicio = models.DateField(default=timezone.now)
+    fecha_finalizacion = models.DateField(default=timezone.now)
+    #----Relaciones
+    creador = models.OneToOneField(Usuario, on_delete=models.CASCADE, related_name="usuario_creador")
+    proyectos_asignados = models.ManyToManyField(Usuario)
 
 class Tarea(models.Model):
     titulo = models.CharField(max_length=50)
@@ -29,21 +43,13 @@ class Tarea(models.Model):
     creador = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     usuarios_asignados = models.ManyToManyField(Usuario, through='Asignacion_de_tarea', related_name="usuarios_asignados")
     etiquetas_asociadas = models.ManyToManyField(Etiqueta)
+    proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE)
 
 class Asignacion_de_tarea(models.Model):
     tarea = models.ForeignKey(Tarea, on_delete=models.CASCADE)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     
-class Proyecto(models.Model):
-    nombre = models.CharField(max_length=50)
-    descripcion = models.TextField()
-    duracion_estimada = models.FloatField()
-    fecha_inicio = models.DateField(default=timezone.now)
-    fecha_finalizacion = models.DateField(default=timezone.now)
-    #----Relaciones
-    creador = models.OneToOneField(Usuario, on_delete=models.CASCADE, related_name="usuario_creador")
-    tareas = models.ForeignKey(Tarea, on_delete=models.CASCADE)
-    proyectos_asignados = models.ManyToManyField(Usuario)
+
 
 class Asignacion_de_Tareas(models.Model):
     observaciones = models.TextField()

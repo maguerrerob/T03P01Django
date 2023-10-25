@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lista de proyectos</h1>
+    {% for proyecto in proyectos %}
+        <ul>
+            <li>
+                <h2>Nombre: </h2><p>{{ proyecto.nombre }}</p>
+                <h2>Descripcion: </h2><p>{{ proyecto.descripcion }}</p>
+                <h2>Duración estimada: </h2><p>{{ proyecto.duracion_estimada }}</p>
+                <h2>Fecha inicio: </h2><p>{{ proyecto.fecha_inicio }}</p>
+                <h2>Fecha finalizacion: </h2><p>{{ proyecto.fecha_finalizacion }}</p>
+                <h2>Creador: </h2><p>{{ proyecto.creador.nombre }}</p>
+                <h2>Usuarios asignados al proyecto: </h2>
+                {% for usu in proyecto.proyectos_asignados.all %}
+                    <p>{{ usu.nombre }}</p>
+                {% endfor %}
+            </li>
+        </ul>
+    {% endfor %}
+</body>
+</html>
