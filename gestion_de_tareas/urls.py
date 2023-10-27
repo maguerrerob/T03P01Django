@@ -3,5 +3,6 @@ from .import views
 
 urlpatterns = [
     path("", views.vista_gestion_de_tareas, name="vista_gestion_de_tareas"),
-    path("proyectos", views.listar_proyectos, name="listar_proyectos")
+    path("proyectos", views.listar_proyectos, name="listar_proyectos"),
+    path("tareas_asociadas_proyectos", views.tareas_proyectos, name="tareas_proyectos")
 ]
