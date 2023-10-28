@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Tareas con observaciones</h1>
+    {% tarea in tareas %}
+        <ul>
+            <li>
+                <p>Título: {{ tarea.tarea.titulo }}</p>
+                <p>Descripción: {{ tarea.descripcion }}</p>
+                <p>Prioridad: {{ tarea.prioridad }}</p>
+                <p>Estado: {{ tarea.estado }}</p>
+                <p>Completa: {{ tarea.completa }}</p>
+                <p>Fecha de creación: {{ tarea.fecha_creacion }}</p>
+                <p>Hora de vencimiento: {{ tarea.hora_vencimiento }}</p>
+                <p><strong>Observaciones: </strong>{{ tarea.observaciones }}</p>
+            </li>
+        </ul>
+    {% endfor %}
+</body>
+</html>
