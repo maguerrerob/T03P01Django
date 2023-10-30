@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>TAREAS COMPLETADAS</h1>
+    {% for tarea in mistareas %}
+        <ul>
+            <li>
+                <p>Nombre tareas: {{ tarea.nombre }}</p>
+                <p>Título: {{ tarea.titulo }}</p>
+                <p>Descripción: {{ tarea.descripcion }}</p>
+                <p>Prioridad: {{ tarea.prioridad }}</p>
+                <p>Estado: {{ tarea.estado }}</p>
+                <p>Completa: {{ tarea.completa }}</p>
+                <p>Fecha de creación: <strong>{{ tarea.fecha_creacion }}</strong></p>
+                <p>Hora de vencimiento: {{ tarea.hora_vencimiento }}</p>
+            </li>
+        </ul>
+    {% endfor %}
+</body>
+</html>

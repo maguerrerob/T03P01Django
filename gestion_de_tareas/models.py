@@ -44,6 +44,9 @@ class Tarea(models.Model):
     usuarios_asignados = models.ManyToManyField(Usuario, through='Asignacion_de_Tareas', related_name="usuarios_asignados")
     etiquetas_asociadas = models.ManyToManyField(Etiqueta)
     proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.titulo
     
 
 class Asignacion_de_Tareas(models.Model):
@@ -57,4 +60,4 @@ class Comentario(models.Model):
     contenido = models.TextField()
     fecha_comentario = models.DateTimeField(default=timezone.now)
     autor = models.OneToOneField(Usuario, on_delete=models.CASCADE)
-    comentario_tarea = models.OneToOneField(Tarea, on_delete=models.CASCADE)
+    comentario_tarea = models.OneToOneField(Tarea, on_delete=models.CASCADE, related_name="comentario_tarea")

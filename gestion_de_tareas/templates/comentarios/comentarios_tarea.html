@@ -6,11 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Tareas con observaciones</h1>
-    {% for tarea in tareass %}
+    <h1>Comentarios de tareas que empiecen y de año concereto</h1>
+    {% for comentario in comentarios %}
         <ul>
             <li>
-                <p><strong>Observaciones: </strong>{{ tarea.observaciones }}</p>
+                <p>Tarea: {{ comentario.comentario_tarea.titulo }}</p>
+                <p>Contenido: {{ comentario.contenido }}</p>
             </li>
         </ul>
     {% endfor %}

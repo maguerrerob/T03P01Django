@@ -6,13 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Tareas con observaciones</h1>
-    {% for tarea in tareass %}
-        <ul>
-            <li>
-                <p><strong>Observaciones: </strong>{{ tarea.observaciones }}</p>
-            </li>
-        </ul>
+    <h1>Todas las etiquetas de tareas de cada proyecto</h1>
+    {% for proyectito in etiquetas.proyecto %}
+        <h3>Proyecto: <strong>{{ proyectito.nombre }}</strong></h3>
     {% endfor %}
 </body>
 </html>

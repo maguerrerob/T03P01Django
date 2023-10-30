@@ -11,7 +11,10 @@
         <li><a href="{% url 'listar_proyectos' %}">Listado de proyectos</a></li>
         <li><a href="{% url 'tareas_proyectos' %}">Tareas asociadas a proyectos</a></li>
         <li><a href="{% url 'usuarios_asignados_tareas' %}">Usuarios con tareas</a></li>
-        <li><a href="{% url 'tareas_con_observacion' 'Often' %}">Tareas con observacion "Among garden"</a></li>
+        <li><a href="{% url 'tareas_con_observacion' 'Among' %}">Tareas con observacion "Among"</a></li>
+        <li><a href="{% url 'tareas_creadas_2anyos' 2025 2026 %}">Tareas creadas entre 2 fechas</a></li>
+        <li><a href="{% url 'comentario_tarea' 'Represent' 2023 %}">Comentarios que empiecen</a></li>
+        <li><a href="{% url 'todas_etiquetas_proyecto' %}">Mostrar todas las etiquetas de las tareas de cada proyecto</a></li>
     </ul>
 </body>
 </html>
