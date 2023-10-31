@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Proyecto, Tarea, Asignacion_de_Tareas, Comentario, Etiqueta
+from django.db.models import Q, Prefetch
 
 # Create your views here.
 
@@ -7,7 +8,7 @@ def vista_gestion_de_tareas(request):
     return render(request, "index.html")
 
 def listar_proyectos(request):
-    proyectos = Proyecto.objects.select_related("creador").prefetch_related("proyectos_asignados").all()
+    proyectos = Proyecto.objects.select_related("creador").prefetch_related("proyectos_asignados", Prefetch("proyecto_tareas")).all()
     return render(request, "proyectos/listaproyectos.html", {"proyectos":proyectos})
 
 def tareas_proyectos(request):

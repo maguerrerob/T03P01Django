@@ -20,6 +20,12 @@
                 {% for usu in proyecto.proyectos_asignados.all %}
                     <p>{{ usu.nombre }}</p>
                 {% endfor %}
+                <h2>Tareas</h2>
+                </ul>
+                    {% for tarea in proyecto.proyecto_tareas.all %}
+                        <li>{{tarea.titulo}}</li>
+                    {% endfor %}
+                </ul>
             </li>
         </ul>
     {% endfor %}

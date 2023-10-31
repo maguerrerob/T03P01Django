@@ -43,7 +43,7 @@ class Tarea(models.Model):
     creador = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     usuarios_asignados = models.ManyToManyField(Usuario, through='Asignacion_de_Tareas', related_name="usuarios_asignados")
     etiquetas_asociadas = models.ManyToManyField(Etiqueta)
-    proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE)
+    proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE, related_name="proyecto_tareas")
 
     def __str__(self) -> str:
         return self.titulo
