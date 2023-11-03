@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <tr>
+        <td><a href="{% url 'listar_proyectos' %}">Listar proyectos</a></td>
+        <td><a href="{% url 'tareas_proyectos' %}">Tareas proyecto</a></td>
+        <td><a href="{% url 'usuarios_asignados_tareas' %}">Usuarios asigandos a tareas</a></td>
+        <td><a href="{% url 'tareas_con_observacion' 'Among' %}">Tareas con observación "Among"</a></td>
+    </tr>
+</body>
+</html>

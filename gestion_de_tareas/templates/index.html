@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "principal.html" %}
+
+{% block cabecera %}
+
     <h1>URLS</h1>
+
+{% endblock %}
+
+{% block contenido %}
+
     <ul>
         <li><a href="{% url 'listar_proyectos' %}">Listado de proyectos</a></li>
         <li><a href="{% url 'tareas_proyectos' %}">Tareas asociadas a proyectos</a></li>
@@ -16,5 +17,5 @@
         <li><a href="{% url 'comentario_tarea' 'Represent' 2023 %}">Comentarios que empiecen</a></li>
         <li><a href="{% url 'todas_etiquetas_proyecto' %}">Mostrar todas las etiquetas de las tareas de cada proyecto</a></li>
     </ul>
-</body>
-</html>
+
+{% endblock %}
