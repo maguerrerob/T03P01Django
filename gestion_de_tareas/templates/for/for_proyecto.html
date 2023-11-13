@@ -1,0 +1,26 @@
+<ul>
+    <li>
+        <h2>Nombre: </h2><p>{{ proyecto.nombre|upper|truncatechars:20 }}</p>
+        <h2>Descripcion: </h2><p>{{ proyecto.descripcion|truncatewords:3 }}</p>
+        {% if proyecto.duracion_estimada > 5 %}
+            <h2>Duración estimada: </h2><p>{{ proyecto.duracion_estimada }}</p>
+        {% else %}
+            <h2>Este proyecto dura menos de 5</h2>
+        {% endif %}
+        <h2>Fecha inicio: </h2><p>{{ proyecto.fecha_inicio|date:"Y-m-d" }}</p>
+        <h2>Fecha finalizacion: </h2><p>{{ proyecto.fecha_finalizacion|date:"Y-m-d" }}</p>
+        <h2>Creador: </h2><p>{{ proyecto.creador.nombre }}</p>
+        <h2>Usuarios asignados al proyecto: </h2>
+        {% for usu in proyecto.proyectos_asignados.all %}
+            <p>{{ usu.nombre }}</p>
+        {% empty %}
+            <p>No tiene usuarios asignados</p>
+        {% endfor %}
+        <h2>Tareas</h2>
+        </ul>
+            {% for tarea in proyecto.proyecto_tareas.all %}
+                <li>{{tarea.titulo}}</li>
+            {% endfor %}
+        </ul>
+    </li>
+</ul>

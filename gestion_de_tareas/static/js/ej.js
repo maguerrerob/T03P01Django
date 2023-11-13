@@ -1,0 +1,1 @@
+alert("Hola, estás en la página index.html")

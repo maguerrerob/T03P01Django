@@ -8,6 +8,7 @@
 
 {% block contenido %}
 
+    {# sólo heredan las 4 primeras, las que están también incluidas en el menú, las demás no #}
     <ul>
         <li><a href="{% url 'listar_proyectos' %}">Listado de proyectos</a></li>
         <li><a href="{% url 'tareas_proyectos' %}">Tareas asociadas a proyectos</a></li>

@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Principal</title>
+    {# Incluir css y js #}
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <script type="text/javascript" src="{% static 'js/ej.js' %}"></script>
 </head>
 <body>
     {% include "menu.html" %}
@@ -15,6 +17,9 @@
 
     {% block contenido %}
     {% endblock %}
+
+    {# Incluir imagen #}
+    <img src="{% static 'img/ronnie.jpg' %}" alt="">
 
     {% include "footer.html" %}
 </body>

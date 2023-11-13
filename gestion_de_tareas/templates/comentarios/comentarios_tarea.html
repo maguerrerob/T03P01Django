@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "principal.html" %}
+
+{% block cabecera %}
     <h1>Comentarios de tareas que empiecen y de año concereto</h1>
+{% endblock %}
+
+{% block contenido %}
     {% for comentario in comentarios %}
         <ul>
             <li>
@@ -15,5 +13,4 @@
             </li>
         </ul>
     {% endfor %}
-</body>
-</html>
+{% endblock %}

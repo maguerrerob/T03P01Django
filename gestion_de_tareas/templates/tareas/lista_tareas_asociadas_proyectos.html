@@ -1,34 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "principal.html" %}
+
+{% block cabecera %}
     <h1>Lista de tareas asociadas a proyectos</h1>
+{% endblock %}
+
+{% block contenido %}
     {% for tarea in tareas_asociadas %}
-        <ul>
-            <li>
-                <h3>Proyecto: {{ tarea.proyecto.nombre }}</h3>
-                <p>Título: {{ tarea.titulo }}</p>
-                <p>Descripción: {{ tarea.descripcion }}</p>
-                <p>Prioridad: {{ tarea.prioridad }}</p>
-                <p>Estado: {{ tarea.estado }}</p>
-                <p>Completa: {{ tarea.completa }}</p>
-                <p>Fecha de creación: {{ tarea.fecha_creacion }}</p>
-                <p>Hora de vencimiento: {{ tarea.hora_vencimiento }}</p>
-                <p>Creador: {{ tarea.creador }}</p>
-                <h4>Usuarios Asignados:</h4>
-                {% for usuario in tarea.usuarios_asignados.all %}
-                    <p>{{ usuario.nombre }}</p>
-                {% endfor %}
-                <h4>Etiquetas asociadas:</h4>
-                {% for eti in tarea.etiquetas_asociadas.all %}
-                    <p>{{ eti.nombre }}</p>
-                {% endfor %}
-            </li>
-        </ul>
+        {% include "for/for_tarea.html" %}
     {% endfor %}
-</body>
-</html>
+{% endblock %}

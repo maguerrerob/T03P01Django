@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "principal.html" %}
+
+{% block cabecera %}
     <h1>Usuarios con tareas ordenados ascendentemente</h1>
+{% endblock %}
+
+{% block contenido %}
     {% for asi in asig %}
-        <ul>
-            <li>{{ asi.usuario.nombre }}</li>
-        </ul>
+        {% include "for/for_asi.html" %}
     {% endfor %}
-</body>
-</html>
+{% endblock %}
